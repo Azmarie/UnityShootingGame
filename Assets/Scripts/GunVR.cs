@@ -35,7 +35,7 @@ public class GunVR : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        headMesh.GetComponent<SkinnedMeshRenderer>().enabled = false; // Hiding player character head to avoid bugs :)
+        headMesh.GetComponent<SkinnedMeshRenderer>().enabled = true; // Hiding player character head to avoid bugs :)
     }
 
     // Update is called once per frame
