@@ -30,10 +30,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!playerInRange) {
-            FollowTargets();
-        }
-
         // Detect the player
         Vector3 foward = transform.TransformDirection(transform.forward);
         Vector3 toPlayer = player.transform.position - transform.position;
@@ -49,6 +45,10 @@ public class Enemy : MonoBehaviour
             playerInRange = true;
         }
 
+        if(!playerInRange) {
+            FollowTargets();
+        }
+        
         if (playerInRange) {
             FollowPlayer();
             AttachPlayer();

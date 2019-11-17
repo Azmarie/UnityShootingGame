@@ -33,31 +33,29 @@ public class CharacterMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        float speed = 300.0f;
-        float rotationSpeed = 1000.0f;
+        float moveSpeed = 3.0f;
 
-        OVRInput.Update();
+        // OVRInput.Update();
         // Getting touch-pad touch position
-        Vector2 touchPos = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, OVRInput.Controller.RTrackedRemote);
+        // Vector2 touchPos = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, OVRInput.Controller.RTrackedRemote);
         // Vector2 touchPos;
         // print(touchPos.magnitude);
         // print(touchPos.x);
         // print(touchPos.y);
-        // The value is in the range -1 to 1
-        float translation = Input.GetAxis("Vertical") * speed;
-        // print(translation);
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-        // print(rotation);
 
-        // Make it move 10 meters per second instead of 10 meters per frame...
-        translation *= Time.deltaTime;
-        rotation *= Time.deltaTime;
-
-        // Move translation along the object's z-axis
-        // transform.Translate(translation, translation, translation);
-
-        // Rotate around our y-axis
-        transform.Rotate(0, rotation, 0);
+        if (Input.GetKey(KeyCode.W)){
+            // print("aaaa");
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S)){
+            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A)){
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D)){
+            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        }
         
         // if (!isDead)
         // {
