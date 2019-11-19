@@ -24,38 +24,60 @@ public class Enemy : MonoBehaviour
     
     int index = 0;
     bool playerInRange = false;
-
+    bool followPlayer = false;
     // Start is called before the first frame update
     void Start()
     {
+        // GetComponent<Animator>().SetBool("run", true);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Detect the player
-        Vector3 foward = transform.TransformDirection(transform.forward);
+        // Vector3 foward = transform.TransformDirection(transform.forward);
         Vector3 toPlayer = player.transform.position - transform.position;
         float dist2Player = Vector3.Distance(player.transform.position, transform.position);
 
-        float dot = Vector3.Dot(foward, toPlayer)/(foward.magnitude*toPlayer.magnitude);
-        var acos = Mathf.Acos(dot);
-        var angle = acos*180/Mathf.PI;
+        // float dot = Vector3.Dot(foward, toPlayer)/(foward.magnitude*toPlayer.magnitude);
+        // var acos = Mathf.Acos(dot);
+        // var angle = acos*180/Mathf.PI;
+        float angle = Vector3.Angle(toPlayer, transform.forward);
 
-        if (angle <= 20 && angle >= -20 && dist2Player <= 10){
-            if(!playerInRange)
-                Debug.Log("Player within the Angle/Distance Range, follow/ start shooting");
-            playerInRange = true;
+        if (angle <= 40 && angle >= -40 && dist2Player <= 10){
+            followPlayer = true;
+
+            if(dist2Player <= 5) {
+                playerInRange = true;
+            } else {
+                playerInRange = false;
+            }
         }
 
-        if(!playerInRange) {
+        if(!followPlayer) {
+            Debug.Log("Not following");
             FollowTargets();
         }
 
-        if (playerInRange) {
+        if(followPlayer) {
+            Debug.Log("Following player");
+            GetComponent<Animator>().SetBool("fire", false);
+            GetComponent<Animator>().SetBool("run", true);
             FollowPlayer();
-            AttachPlayer();
+
+            if (playerInRange) {
+                Debug.Log("Player in range");
+                GetComponent<Animator>().SetBool("run", false);
+                GetComponent<Animator>().SetBool("fire", true);
+                AttackPlayer();
+            } 
+            else {
+                Debug.Log("Player not in range anymore, but still following player");
+                GetComponent<Animator>().SetBool("fire", false);
+                GetComponent<Animator>().SetBool("run", true);
+            }
         }
+
     }
 
     void FollowTargets(){
@@ -80,7 +102,7 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime);
     }
 
-    void AttachPlayer(){
+    void AttackPlayer(){
         if(Time.time > nextFire){
             nextFire = Time.time + fireRate;
             shotDetection(); 
