@@ -55,24 +55,24 @@ public class Enemy : MonoBehaviour
         }
 
         if(!followPlayer) {
-            Debug.Log("Not following");
+            // Debug.Log("Not following");
             FollowTargets();
         }
 
         if(followPlayer) {
-            Debug.Log("Following player");
+            // Debug.Log("Following player");
             GetComponent<Animator>().SetBool("fire", false);
             GetComponent<Animator>().SetBool("run", true);
             FollowPlayer();
 
             if (playerInRange) {
-                Debug.Log("Player in range");
+                // Debug.Log("Player in range");
                 GetComponent<Animator>().SetBool("run", false);
-                GetComponent<Animator>().SetBool("fire", true);
+                // GetComponent<Animator>().SetBool("fire", true);
                 AttackPlayer();
             } 
             else {
-                Debug.Log("Player not in range anymore, but still following player");
+                // Debug.Log("Player not in range anymore, but still following player");
                 GetComponent<Animator>().SetBool("fire", false);
                 GetComponent<Animator>().SetBool("run", true);
             }
@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
 
     void AttackPlayer(){
         if(Time.time > nextFire){
+            GetComponent<Animator>().SetBool("fire", true);
             nextFire = Time.time + fireRate;
             shotDetection(); 
             addEffects();
@@ -125,11 +126,12 @@ public class Enemy : MonoBehaviour
     {   
         RaycastHit rayHit;
         // float randomAngle = new System.Random(minAngle, maxAngle);
-        Vector3 axis = new Vector3(1, 0, 1);
-        var rotation = Quaternion.AngleAxis(20, axis);
+        // Vector3 axis = new Vector3(1, 0, 1);
+        // var rotation = Quaternion.AngleAxis(20, axis);
         var forward = end.transform.position - start.transform.position;
         
-        if(Physics.Raycast(end.transform.position, rotation*forward, out rayHit, 100.0f)){
+        // if(Physics.Raycast(end.transform.position, rotation*forward, out rayHit, 100.0f)){
+        if(Physics.Raycast(end.transform.position, forward, out rayHit, 100.0f)){
             if(rayHit.transform.tag == "Player"){
                 //Player take damage
 
