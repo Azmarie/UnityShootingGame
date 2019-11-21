@@ -16,8 +16,8 @@ public class Enemy : MonoBehaviour
     public float aimRate = 0.2f;
     private float nextFire = 0f; 
 
-    public float health = 100; // reduce by 20
-    public bool isDead; // if it's less or equal to 0
+    public float health = 100;
+    public bool isDead;
 
     // float gunShotTime = 0.2f;
     // float gunReloadTime = 1.0f;
@@ -95,6 +95,7 @@ public class Enemy : MonoBehaviour
 
         if (nextFire > fireRate)
         {
+            GetComponent<Animator>().SetBool("run", false);
             GetComponent<Animator>().SetTrigger("fire");
             shotDetection(); 
             addEffects();
@@ -115,20 +116,16 @@ public class Enemy : MonoBehaviour
 
     void shotDetection() 
     {   
-        // -0.1 0.1
-        // end*random, right*random
 
         RaycastHit rayHit;
-        // float randomAngle = new System.Random(minAngle, maxAngle);
-        // Vector3 axis = new Vector3(1, 0, 1);
-        // var rotation = Quaternion.AngleAxis(20, axis);
-        var forward = end.transform.position - start.transform.position;
+        Vector3 rand = end.transform.up * Random.Range(-0.1f, 0.1f) + end.transform.right * Random.Range(-0.1f, 0.1f);
+        Vector3 end_rand = end.transform.position + rand;
+        var forward = end_rand - start.transform.position;
         
-        // if(Physics.Raycast(end.transform.position, rotation*forward, out rayHit, 100.0f)){
         if(Physics.Raycast(end.transform.position, forward, out rayHit, 100.0f)){
             if(rayHit.transform.tag == "Player"){
                 //Player take damage
-
+                GetComponent<GunVR>().Being_shot(20);
             } else {
                 Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
             }
@@ -143,4 +140,15 @@ public class Enemy : MonoBehaviour
         Destroy(tempMuzzle, 2.0f);
     }
 
+    // void isDead(){
+        // AddComponent<Rigidbody>(); 
+        // disable is kinematic to add phsics
+        // gun.transform.parent = null; // to make it an independent object
+        // make sure thre's a box collider on your gun when it's independent
+    // }
+
 }
+
+
+// https://free3d.com/
+// For ammo models (as objects)

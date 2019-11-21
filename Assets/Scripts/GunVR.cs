@@ -21,7 +21,8 @@ public class GunVR : MonoBehaviour {
     float gunShotTime = 0.1f;
     float gunReloadTime = 1.0f;
     Quaternion previousRotation;
-    public float health = 100; // reduce by 20
+    public float health = 100;
+    // public GameObject Health;
     public bool isDead; // if it's less or equal to 0
 
     public Text magBullets;
@@ -96,10 +97,12 @@ public class GunVR : MonoBehaviour {
 
     public void Being_shot(float damage) // getting hit from enemy
     {
+        Debug.Log("Player being shot");
         // use component to get enemy's health
-        GetComponent<CharacterMovement>().isDead = true;
-        GetComponent<CharacterController>().enabled = false;
+        // GetComponent<CharacterMovement>().isDead = true;
+        // GetComponent<CharacterController>().enabled = false;
         health -= damage;
+        Debug.Log(health);
         // chande isDead to true if it's dead
         // change dead to true in the anamator
     }
