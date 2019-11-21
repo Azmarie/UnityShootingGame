@@ -13,11 +13,11 @@ public class Enemy : MonoBehaviour
     public GameObject gun;
 
     public float fireRate = 0.2f;  
-    // public int attackDamage = 10;
     public float aimRate = 0.2f;
-    private float nextFire; 
-    // private float minAngle;
-    // private float maxAngle;
+    private float nextFire = 0f; 
+
+    public float health = 100; // reduce by 20
+    public bool isDead; // if it's less or equal to 0
 
     // float gunShotTime = 0.2f;
     // float gunReloadTime = 1.0f;
@@ -28,20 +28,14 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // GetComponent<Animator>().SetBool("run", true);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Detect the player
-        // Vector3 foward = transform.TransformDirection(transform.forward);
         Vector3 toPlayer = player.transform.position - transform.position;
         float dist2Player = Vector3.Distance(player.transform.position, transform.position);
-
-        // float dot = Vector3.Dot(foward, toPlayer)/(foward.magnitude*toPlayer.magnitude);
-        // var acos = Mathf.Acos(dot);
-        // var angle = acos*180/Mathf.PI;
         float angle = Vector3.Angle(toPlayer, transform.forward);
 
         if (angle <= 40 && angle >= -40 && dist2Player <= 10){
@@ -61,21 +55,16 @@ public class Enemy : MonoBehaviour
 
         if(followPlayer) {
             // Debug.Log("Following player");
-            GetComponent<Animator>().SetBool("fire", false);
             GetComponent<Animator>().SetBool("run", true);
             FollowPlayer();
 
             if (playerInRange) {
                 // Debug.Log("Player in range");
-                GetComponent<Animator>().SetBool("run", false);
-                // GetComponent<Animator>().SetBool("fire", true);
                 AttackPlayer();
             } 
-            else {
-                // Debug.Log("Player not in range anymore, but still following player");
-                GetComponent<Animator>().SetBool("fire", false);
-                GetComponent<Animator>().SetBool("run", true);
-            }
+            // else {
+            //     Debug.Log("Player not in range anymore, but still following player");
+            // }
         }
 
     }
@@ -103,13 +92,15 @@ public class Enemy : MonoBehaviour
     }
 
     void AttackPlayer(){
-        if(Time.time > nextFire){
-            GetComponent<Animator>().SetBool("fire", true);
-            nextFire = Time.time + fireRate;
+
+        if (nextFire > fireRate)
+        {
+            GetComponent<Animator>().SetTrigger("fire");
             shotDetection(); 
             addEffects();
+            nextFire = 0;
         }
-        // animator.SetBool("fire", true);
+        nextFire += Time.deltaTime;
         
         // // Instantiating the muzzle prefab and shot sound
         
@@ -124,6 +115,9 @@ public class Enemy : MonoBehaviour
 
     void shotDetection() 
     {   
+        // -0.1 0.1
+        // end*random, right*random
+
         RaycastHit rayHit;
         // float randomAngle = new System.Random(minAngle, maxAngle);
         // Vector3 axis = new Vector3(1, 0, 1);

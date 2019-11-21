@@ -21,8 +21,8 @@ public class GunVR : MonoBehaviour {
     float gunShotTime = 0.1f;
     float gunReloadTime = 1.0f;
     Quaternion previousRotation;
-    public float health = 100;
-    public bool isDead;
+    public float health = 100; // reduce by 20
+    public bool isDead; // if it's less or equal to 0
 
     public Text magBullets;
     public Text remainingBullets;
@@ -96,7 +96,12 @@ public class GunVR : MonoBehaviour {
 
     public void Being_shot(float damage) // getting hit from enemy
     {
-        
+        // use component to get enemy's health
+        GetComponent<CharacterMovement>().isDead = true;
+        GetComponent<CharacterController>().enabled = false;
+        health -= damage;
+        // chande isDead to true if it's dead
+        // change dead to true in the anamator
     }
 
     public void ReloadEvent(int eventNumber) // appearing and disappearing the handMag and gunMag
@@ -131,6 +136,8 @@ public class GunVR : MonoBehaviour {
         RaycastHit rayHit;
         if(Physics.Raycast(end.transform.position, (end.transform.position - start.transform.position), out rayHit, 100.0f)){
             if(rayHit.transform.tag == "enemy"){
+                // Enemy take damage
+                // health -= 20;
 
             } else {
                 Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
