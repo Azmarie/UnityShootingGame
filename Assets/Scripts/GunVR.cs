@@ -9,6 +9,8 @@ public class GunVR : MonoBehaviour {
 
     public GameObject end, start; // The gun start and end point
     public GameObject gun;
+    public GameObject AmmoBox;
+
     public Animator animator;
     
     public GameObject spine;
@@ -27,6 +29,7 @@ public class GunVR : MonoBehaviour {
 
     public Text magBullets;
     public Text remainingBullets;
+    public Text health_text;
 
     int magBulletsVal = 30;
     int remainingBulletsVal = 90;
@@ -41,7 +44,8 @@ public class GunVR : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        float dist2AmmoBox = Vector3.Distance(AmmoBox.transform.position, transform.position);
+
         // Cool down times
         if (gunShotTime >= 0.0f)
         {
@@ -55,8 +59,9 @@ public class GunVR : MonoBehaviour {
 
         OVRInput.Update();
         
-        if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetMouseButtonDown(0)) && gunShotTime <= 0 && gunReloadTime <= 0.0f && magBulletsVal > 0 && !isDead)
-        { 
+        if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetMouseButtonDown(0))
+            && gunShotTime <= 0 && gunReloadTime <= 0.0f && magBulletsVal > 0 && !isDead)
+        {
             shotDetection(); // Should be completed
 
             addEffects(); // Should be completed
@@ -78,8 +83,10 @@ public class GunVR : MonoBehaviour {
         {
             animator.SetBool("fire", false);
         }
-
-        if ((OVRInput.GetDown(OVRInput.Button.Back) || OVRInput.Get(OVRInput.Button.Back) || OVRInput.GetDown(OVRInput.RawButton.Back) || OVRInput.Get(OVRInput.RawButton.Back)) && gunReloadTime <= 0.0f && gunShotTime <= 0.1f && remainingBulletsVal > 0 && magBulletsVal < magSize && !isDead )
+        
+        // Bonus: if the ammo bos is within 3 meters, refill
+        if ((dist2AmmoBox <= 3 || OVRInput.GetDown(OVRInput.Button.Back) || OVRInput.Get(OVRInput.Button.Back) || OVRInput.GetDown(OVRInput.RawButton.Back) || OVRInput.Get(OVRInput.RawButton.Back))
+            && gunReloadTime <= 0.0f && gunShotTime <= 0.1f && remainingBulletsVal > 0 && magBulletsVal < magSize && !isDead )
         {
             animator.SetBool("reload", true);
             gunReloadTime = 2.5f;
@@ -93,8 +100,6 @@ public class GunVR : MonoBehaviour {
        
     }
 
-  
-
     public void Being_shot(float damage) // getting hit from enemy
     {
         Debug.Log("Player being shot");
@@ -103,6 +108,9 @@ public class GunVR : MonoBehaviour {
         // GetComponent<CharacterController>().enabled = false;
         health -= damage;
         Debug.Log(health);
+        if(health <= 0){
+            GetComponent<CharacterMovement>().isDead = true;
+        }
         // chande isDead to true if it's dead
         // change dead to true in the anamator
     }
@@ -132,16 +140,18 @@ public class GunVR : MonoBehaviour {
     {
         magBullets.text = magBulletsVal.ToString() ;
         remainingBullets.text = remainingBulletsVal.ToString();
+        health_text.text = health.ToString();
     }
 
     void shotDetection() // Detecting the object which player shot 
     {   
         RaycastHit rayHit;
         if(Physics.Raycast(end.transform.position, (end.transform.position - start.transform.position), out rayHit, 100.0f)){
-            if(rayHit.transform.tag == "enemy"){
-                // Enemy take damage
-                // health -= 20;
+            Debug.Log(rayHit.transform.tag);
 
+            if(rayHit.transform.tag == "Enemy"){
+                Debug.Log("Enemy being shotttt");
+                rayHit.transform.GetComponent<Enemy>().Being_shot(20);
             } else {
                 Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
             }

@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject mazzlePrefab;
     public GameObject shotSound;
     public GameObject bulletHole;
-    public GameObject end, start; // The gun start and end point
+    public GameObject end, start;
     public GameObject gun;
 
     public float fireRate = 0.2f;  
@@ -18,13 +18,12 @@ public class Enemy : MonoBehaviour
 
     public float health = 100;
     public bool isDead;
-
-    // float gunShotTime = 0.2f;
-    // float gunReloadTime = 1.0f;
     
     int index = 0;
     bool playerInRange = false;
     bool followPlayer = false;
+    bool Keep_follow_target = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,40 +32,63 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Detect the player
-        Vector3 toPlayer = player.transform.position - transform.position;
-        float dist2Player = Vector3.Distance(player.transform.position, transform.position);
-        float angle = Vector3.Angle(toPlayer, transform.forward);
+        if (health <= 0 ){
 
-        if (angle <= 40 && angle >= -40 && dist2Player <= 10){
-            followPlayer = true;
+            GetComponent<Animator>().SetBool("run", false);
+            GetComponent<Animator>().SetBool("fire", false);
+            GetComponent<Animator>().SetBool("die", true);
+            deadEffects();
+        } else {
 
-            if(dist2Player <= 5) {
-                playerInRange = true;
-            } else {
-                playerInRange = false;
+            // Detect the player
+            Vector3 toPlayer = player.transform.position - transform.position;
+            float dist2Player = Vector3.Distance(player.transform.position, transform.position);
+            float angle = Vector3.Angle(toPlayer, transform.forward);
+
+            if (angle <= 40 && angle >= -40 && dist2Player <= 10){
+                followPlayer = true;
+
+                if(dist2Player <= 5) {
+                    playerInRange = true;
+                } else {
+                    playerInRange = false;
+                }
             }
+
+            if(!followPlayer) {
+                Debug.Log("Not following");
+                FollowTargets();
+            }
+
+            if(followPlayer) {
+                Debug.Log("Following player");
+                GetComponent<Animator>().SetBool("run", true);
+                FollowPlayer();
+
+                if (playerInRange) {
+                    GetComponent<Animator>().SetBool("run", false);
+                    Debug.Log("Player in range");
+                    AttackPlayer();
+                } 
+                // else {
+                //     GetComponent<Animator>().SetBool("run", true);
+                //     Debug.Log("Player not in range, following player");
+                // }
+            }   
         }
 
-        if(!followPlayer) {
-            // Debug.Log("Not following");
-            FollowTargets();
-        }
+    }
 
-        if(followPlayer) {
-            // Debug.Log("Following player");
-            GetComponent<Animator>().SetBool("run", true);
-            FollowPlayer();
-
-            if (playerInRange) {
-                // Debug.Log("Player in range");
-                AttackPlayer();
-            } 
-            // else {
-            //     Debug.Log("Player not in range anymore, but still following player");
-            // }
-        }
-
+    public void Being_shot(float damage) // getting hit from player
+    {
+        Debug.Log("Enemy being shot");
+        // use component to get enemy's health
+        // GetComponent<CharacterMovement>().isDead = true;
+        // GetComponent<CharacterController>().enabled = false;
+        health -= damage;
+        Debug.Log(health);
+        // chande isDead to true if it's dead
+        // change dead to true in the anamator
     }
 
     void FollowTargets(){
@@ -92,10 +114,8 @@ public class Enemy : MonoBehaviour
     }
 
     void AttackPlayer(){
-
         if (nextFire > fireRate)
         {
-            GetComponent<Animator>().SetBool("run", false);
             GetComponent<Animator>().SetTrigger("fire");
             shotDetection(); 
             addEffects();
@@ -140,15 +160,11 @@ public class Enemy : MonoBehaviour
         Destroy(tempMuzzle, 2.0f);
     }
 
-    // void isDead(){
+    void deadEffects(){
         // AddComponent<Rigidbody>(); 
         // disable is kinematic to add phsics
         // gun.transform.parent = null; // to make it an independent object
         // make sure thre's a box collider on your gun when it's independent
-    // }
+    }
 
 }
-
-
-// https://free3d.com/
-// For ammo models (as objects)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour {
     public GameObject CameraObject;
@@ -8,6 +9,8 @@ public class CharacterMovement : MonoBehaviour {
     public GameObject CameraParent;
     public GameObject cameraFinalPos;
     public GameObject neck;
+    public GameObject door;
+
     Animator animator;
     public GameObject spine;
     Quaternion spineInitialLocalRotation;
@@ -86,9 +89,24 @@ public class CharacterMovement : MonoBehaviour {
         //         animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(touchPos.x, 2f) + Mathf.Pow(forwardSpeed, 2f)));
         //     }   
         // }
+        // OnTriggerEnter();
+
     }
 
+    void OnTriggerEnter(Collider col) {
+         Debug.Log("OnTriggerEnter");
+         Debug.Log(col.gameObject.tag);
+        if(col.gameObject.tag == "door")
+        {
+            Debug.Log("Reach Door");
+            Invoke("reloadGame", 3f);
+        }
+    }
 
+    void reloadGame(){
+        Debug.Log("Scene loading: 0");
+        SceneManager.LoadScene("SampleScene");
+    }
 
     private void LateUpdate()
     {
@@ -129,3 +147,9 @@ public class CharacterMovement : MonoBehaviour {
     }
 
 }
+
+// When player moved to the door, the player won
+// https://docs.unity3d.com/ScriptReference/Collider.OnTriggerEnter.html
+// Pass Scene 0 
+// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html 
+// with invoke time
