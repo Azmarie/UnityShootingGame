@@ -33,10 +33,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (health <= 0 ){
-
-            GetComponent<Animator>().SetBool("run", false);
-            GetComponent<Animator>().SetBool("fire", false);
-            GetComponent<Animator>().SetBool("die", true);
+            isDead = true;
             deadEffects();
         } else {
 
@@ -161,10 +158,12 @@ public class Enemy : MonoBehaviour
     }
 
     void deadEffects(){
-        // AddComponent<Rigidbody>(); 
-        // disable is kinematic to add phsics
-        // gun.transform.parent = null; // to make it an independent object
-        // make sure thre's a box collider on your gun when it's independent
+        // GetComponent<Animator>().SetBool("run", false);
+        // GetComponent<Animator>().SetBool("fire", false);
+        GetComponent<Animator>().SetBool("die", true);
+        gun.transform.parent = null; // to make it an independent object
+        GetComponent<CharacterController>().enabled = false;
+        gun.GetComponent<Collider>().enabled = true;
+        gun.AddComponent<Rigidbody>().isKinematic = false;
     }
-
 }
