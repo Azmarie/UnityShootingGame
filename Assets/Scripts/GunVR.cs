@@ -97,6 +97,7 @@ public class GunVR : MonoBehaviour {
             animator.SetBool("reload", false);
         }
         updateText();
+
        
     }
 
@@ -109,7 +110,9 @@ public class GunVR : MonoBehaviour {
         health -= damage;
         Debug.Log(health);
         if(health <= 0){
+            Debug.Log("supposed o be dead");
             GetComponent<CharacterMovement>().isDead = true;
+            isDead = true;
         }
         // chande isDead to true if it's dead
         // change dead to true in the anamator

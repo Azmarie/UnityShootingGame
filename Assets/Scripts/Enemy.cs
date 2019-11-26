@@ -143,9 +143,15 @@ public class Enemy : MonoBehaviour
             if(rayHit.transform.tag == "Player"){
                 //Player take damage
                 GetComponent<GunVR>().Being_shot(20);
-            } else {
-                Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
+                if(GetComponent<GunVR>().health <= 0){
+                    Debug.Log("player supposed o be dead");
+                    GetComponent<CharacterMovement>().isDead = true;
+                    GetComponent<GunVR>().isDead = true;
+                }
             }
+            // else {
+            //     Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
+            // }
         }
     }
 
@@ -158,11 +164,9 @@ public class Enemy : MonoBehaviour
     }
 
     void deadEffects(){
-        // GetComponent<Animator>().SetBool("run", false);
-        // GetComponent<Animator>().SetBool("fire", false);
+        GetComponent<CharacterController>().enabled = false;
         GetComponent<Animator>().SetBool("die", true);
         gun.transform.parent = null; // to make it an independent object
-        GetComponent<CharacterController>().enabled = false;
         gun.GetComponent<Collider>().enabled = true;
         gun.AddComponent<Rigidbody>().isKinematic = false;
     }
