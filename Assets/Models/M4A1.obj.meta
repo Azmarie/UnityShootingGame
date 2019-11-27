@@ -3,7 +3,392 @@ guid: 511ac9b8d1e3f4cad9da8f7a92c0de0f
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_desmont_magpul20rndMat
+    second: {fileID: 2100000, guid: 6c868063deec4449ebbca65717d5eeff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_desmont_verticalgripMat
+    second: {fileID: 2100000, guid: 9b3bc6dd885b949959313d4d5f653ee0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group10_M4_carbine_pCube19Mat
+    second: {fileID: 2100000, guid: 149949ae2e25d479eb79f68452552c33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group10_M4_carbine_pCube20Mat
+    second: {fileID: 2100000, guid: e6b46ce97e01a466e979ba93a773d508, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group10_M4_carbine_pCylinder5Mat
+    second: {fileID: 2100000, guid: badea21d28a3d4165865e908ec2a212b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group10_M4_carbine_pCylinder6Mat
+    second: {fileID: 2100000, guid: a10c1b876727040958dd414a221e7bc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group10_M4_carbine_pSphere1Mat
+    second: {fileID: 2100000, guid: 9d428091782ea4c8f9daf26d7548a11b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group10_M4_carbine_pSphere2Mat
+    second: {fileID: 2100000, guid: 251d1a92505de45a88673af82cfe53d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group12_M4_carbine_pCylinder12Mat
+    second: {fileID: 2100000, guid: 518961417c74949adb0eecced8f96498, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group12_M4_carbine_polySurface5Mat
+    second: {fileID: 2100000, guid: 771496765a47e478aaebbee689e1733c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group15_M4_carbine_group14_M4_carbine_pCube32Mat
+    second: {fileID: 2100000, guid: 1cbd9d83c25bc48698a7d23d3847a535, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group15_M4_carbine_group14_M4_carbine_pCylinder16Mat
+    second: {fileID: 2100000, guid: 45a9f01e7760b4299a2450c476e5f2a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder17Mat
+    second: {fileID: 2100000, guid: 6280615ada4fe4f5797a56d672ad133c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder18Mat
+    second: {fileID: 2100000, guid: d8e56fd7a044b4bccb6b142de7d0fc46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder19Mat
+    second: {fileID: 2100000, guid: ec702e62f2a974aa1a97f57b8b86616a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder20Mat
+    second: {fileID: 2100000, guid: 6bef8ec12bcba4e1bb9721e94926d049, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder21Mat
+    second: {fileID: 2100000, guid: b6b8fa4415ef24182b6d4d9b1b255f8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder22Mat
+    second: {fileID: 2100000, guid: 34f8fd4f4307343c6a56a0bbf41262ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder23Mat
+    second: {fileID: 2100000, guid: 0702cf1ac97d84092a548c1f1f69d565, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder24Mat
+    second: {fileID: 2100000, guid: ac0ef766e9f7d4de4992e504e2f9d41d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder25Mat
+    second: {fileID: 2100000, guid: f6bed4a016513455199b6006735d5655, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder26Mat
+    second: {fileID: 2100000, guid: 22e1b2a368dd14b2c89ba1e14d0ebd0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder27Mat
+    second: {fileID: 2100000, guid: 217820b7b7c984ce88abfa3b85e5bada, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group16_M4_carbine_pCylinder28Mat
+    second: {fileID: 2100000, guid: 3ca6e5016f1824baba4c1bc47a4de1c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube10Mat
+    second: {fileID: 2100000, guid: c594f97e6802b44ef990ab662cab693b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube11Mat
+    second: {fileID: 2100000, guid: ed79f003d0edc4078bbcd416d011f709, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube12Mat
+    second: {fileID: 2100000, guid: d6eade4aa4dfd46de82b24602505713c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube13Mat
+    second: {fileID: 2100000, guid: 01f4019002d314390b025c74e0503a32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube14Mat
+    second: {fileID: 2100000, guid: ea975bf9c124e43dbbba702012dc4323, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube15Mat
+    second: {fileID: 2100000, guid: 526420967e5ae4e3c81012c05d91d4b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube1Mat
+    second: {fileID: 2100000, guid: 07fcc1e04c71749939a2e3ea4ef24d7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube3Mat
+    second: {fileID: 2100000, guid: 9b83a3c37c6054e0087a6da9aeedb327, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube4Mat
+    second: {fileID: 2100000, guid: b7fa45784fae8451abba2b60c522bd08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube5Mat
+    second: {fileID: 2100000, guid: 4b5296a6b6e8f448bba27ab1d6b4355f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube6Mat
+    second: {fileID: 2100000, guid: 9e5ada0527b70410db4377dd9df7a04c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube8Mat
+    second: {fileID: 2100000, guid: ec6b339b4e2d14513aa5922dd2bcaa7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCube9Mat
+    second: {fileID: 2100000, guid: 8b688d6f735de49699c6671eb160c929, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCylinder1Mat
+    second: {fileID: 2100000, guid: 5d29b223a25b34b3384007ad532917b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCylinder2Mat
+    second: {fileID: 2100000, guid: 5a6f10859824e463f91803bc5e40d6a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCylinder3Mat
+    second: {fileID: 2100000, guid: 2a0c6a98d2e9949f8b25102ae0bac196, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_pCylinder4Mat
+    second: {fileID: 2100000, guid: e57a98dfd530c474a94e9ed36267e4b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_group2_M4_carbine_polySurface2Mat
+    second: {fileID: 2100000, guid: eb907f5fa4cc84290a4f1e10766b612c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube21_M4_carbine_group10Mat
+    second: {fileID: 2100000, guid: bbcb3b10c140a4ff0a1e054a6e627cd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube25Mat
+    second: {fileID: 2100000, guid: 38c148f2261d341338c613b1fcb15940, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube26Mat
+    second: {fileID: 2100000, guid: 17b5c9df67ceb4f359ba2d399cbe1285, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube27Mat
+    second: {fileID: 2100000, guid: c44d2b62358ba450a8ff74e4caedba40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube28Mat
+    second: {fileID: 2100000, guid: 607cf6766aa1f4931bf24c77bd625cf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube29Mat
+    second: {fileID: 2100000, guid: 39bf7f09fc5aa437e94b9e1783f06657, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube2_M4_carbine_group16Mat
+    second: {fileID: 2100000, guid: 63a93acc635684ec98262289dd490249, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube30Mat
+    second: {fileID: 2100000, guid: 96385521698c140e39e8fde36a21f1bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCube7_M4_carbine_group2Mat
+    second: {fileID: 2100000, guid: 27217144d221d47cc96a61af4a266774, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCylinder10Mat
+    second: {fileID: 2100000, guid: fb20cccf012c14d63a5f49ea44c4b022, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCylinder13_M4_carbine_group12Mat
+    second: {fileID: 2100000, guid: 1d3d67aec35b644d492da65a204fa458, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCylinder7Mat
+    second: {fileID: 2100000, guid: 58d8a9d415aa5492995bf1f5999f17bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCylinder8Mat
+    second: {fileID: 2100000, guid: a4003af69a5cf4860a3814b6c663f028, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pCylinder9Mat
+    second: {fileID: 2100000, guid: 1e03a537b64824ec889924c7cc96b963, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pPipe2Mat
+    second: {fileID: 2100000, guid: da34fb3ae799b48b59f78d9c2dea1d0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pPipe3Mat
+    second: {fileID: 2100000, guid: 86eae98aa38f44ffb9e487f336ef2f1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pPipe4Mat
+    second: {fileID: 2100000, guid: 26dcba09972504f65aaf74abaca6df6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pPipe5Mat
+    second: {fileID: 2100000, guid: 6e15a184015364ce98595af884828022, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pPipe6_M4_carbine_group15_M4_carbine_group14Mat
+    second: {fileID: 2100000, guid: 84a2fed691a1443e088cda9529118504, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_pPlane1Mat
+    second: {fileID: 2100000, guid: a0e987ac3e1d744baa83427901ba1123, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface10_M4_carbine_polySurface6Mat
+    second: {fileID: 2100000, guid: dc8865bbda8dd4f0b839f5293bc2495f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface11Mat
+    second: {fileID: 2100000, guid: 62fe7b86ebe8f47bfb8ba6830cfda2e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface12Mat
+    second: {fileID: 2100000, guid: f6cb56165df8d4aee922aa7d5e13430b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface13Mat
+    second: {fileID: 2100000, guid: a006ead4984764f97b24afc542b0cf21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface14Mat
+    second: {fileID: 2100000, guid: de030d2dafbb746248a1749960fdb09d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface15Mat
+    second: {fileID: 2100000, guid: 1c5247fcf3b374f439f5efd77e95d2ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface16Mat
+    second: {fileID: 2100000, guid: 796a040ef2a714fd1b5a60fee8a8e6c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface17Mat
+    second: {fileID: 2100000, guid: b4415835f277147328b0d428cddffb6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface18Mat
+    second: {fileID: 2100000, guid: 32103ce0c51a5492890b4b4e4fee76c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface19Mat
+    second: {fileID: 2100000, guid: dba48da53b0334f03b2fef98508e2753, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface6_M4_carbine_polySurface7_group1_M4_carbine_group13Mat
+    second: {fileID: 2100000, guid: 3a6f17f37e532418d80fadc9de53782c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface6_group1_M4_carbine_group13_M4_carbine_polySurface8Mat
+    second: {fileID: 2100000, guid: 7c6ade781835b40168ac112cdfd464c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_carbine_polySurface6_group1_M4_carbine_group13_M4_carbine_polySurface9Mat
+    second: {fileID: 2100000, guid: 9a46d9e53edfa4026be97f5f2c66c91d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCube1Mat
+    second: {fileID: 2100000, guid: 0de33e7871440416180947f92d91fe8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCylinder1Mat
+    second: {fileID: 2100000, guid: d5a7f38bddc114bc291acbf279bec8dd, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
