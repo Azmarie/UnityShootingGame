@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GunVR : MonoBehaviour {
@@ -110,8 +111,15 @@ public class GunVR : MonoBehaviour {
             GetComponent<Animator>().SetBool("dead", true);
             GetComponent<CharacterMovement>().isDead = true;
             GetComponent<CharacterController>().enabled = false;
+            
+            Invoke("reloadGame", 3f);
 
         }
+    }
+
+    void reloadGame(){
+        Debug.Log("Scene loading: 0");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void ReloadEvent(int eventNumber) // appearing and disappearing the handMag and gunMag
