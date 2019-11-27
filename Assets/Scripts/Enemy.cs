@@ -55,18 +55,15 @@ public class Enemy : MonoBehaviour
                 }
 
                 if(!followPlayer) {
-                    Debug.Log("Not following");
                     FollowTargets();
                 }
 
                 if(followPlayer) {
-                    Debug.Log("Following player");
                     GetComponent<Animator>().SetBool("run", true);
                     FollowPlayer();
 
                     if (playerInRange) {
                         GetComponent<Animator>().SetBool("run", false);
-                        Debug.Log("Player in range");
                         AttackPlayer();
                     } 
                 }   
@@ -77,9 +74,7 @@ public class Enemy : MonoBehaviour
 
     public void Being_shot(float damage) // getting hit from player
     {
-        Debug.Log("Enemy being shot");
         health -= damage;
-        Debug.Log(health);
     }
 
     void FollowTargets(){
@@ -135,16 +130,7 @@ public class Enemy : MonoBehaviour
         
         if(Physics.Raycast(end.transform.position, forward, out rayHit, 100.0f)){
             if(rayHit.transform.tag == "Player"){
-                //Player take damage
                 rayHit.transform.GetComponent<GunVR>().Being_shot(20);
-                // if(GetComponent<GunVR>().health <= 0){
-                //     Debug.Log("player supposed o be dead");
-                //     player.GetComponent<CharacterMovement>().isDead = true;
-                //     player.GetComponent<GunVR>().isDead = true;
-                //     player.GetComponent<Animator>().SetBool("dead", true);
-                //     player.GetComponent<CharacterController>().enabled = false;
-                //     player.GetComponent<CharacterMovement>().enabled = false;
-                // }
             }
             // else {
             //     Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
@@ -165,6 +151,7 @@ public class Enemy : MonoBehaviour
         GetComponent<Animator>().SetBool("die", true);
         gun.transform.parent = null;
         gun.GetComponent<Collider>().enabled = true;
-        gun.AddComponent<Rigidbody>().isKinematic = false;
+        if(gun.GetComponent<Rigidbody>() == null)
+            gun.AddComponent<Rigidbody>().isKinematic = false;
     }
 }

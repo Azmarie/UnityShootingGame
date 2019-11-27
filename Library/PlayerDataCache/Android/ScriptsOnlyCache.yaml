@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - Enemy
     - GunVR
     - ONSPSettings
+    - WeaponSwitcher
     Oculus.VR.Editor.dll:
     - OVRConfig
     Oculus.VR.dll:
@@ -17,7 +18,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateEditor
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
@@ -81,23 +81,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9996}
     - Class: 114
-      Script: {instanceID: 10028}
+      Script: {instanceID: 10030}
     - Class: 114
-      Script: {instanceID: 10048}
+      Script: {instanceID: 10050}
     - Class: 114
-      Script: {instanceID: 10104}
+      Script: {instanceID: 10106}
     - Class: 114
-      Script: {instanceID: 10468}
+      Script: {instanceID: 10470}
     - Class: 114
-      Script: {instanceID: 10544}
+      Script: {instanceID: 10546}
     - Class: 114
-      Script: {instanceID: 10754}
+      Script: {instanceID: 10756}
     - Class: 114
-      Script: {instanceID: 11832}
+      Script: {instanceID: 11834}
     - Class: 114
-      Script: {instanceID: 11878}
+      Script: {instanceID: 11882}
     - Class: 114
-      Script: {instanceID: 12242}
+      Script: {instanceID: 12246}
+    - Class: 114
+      Script: {instanceID: 12336}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -223,7 +225,7 @@ ScriptsOnlyBuild:
     className: StartMenu
   - hash:
       serializedVersion: 2
-      Hash: 5989dd1cac15232dc301d4d26dc89131
+      Hash: 57facf5450241cf387c40a7c419362ca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterMovement
@@ -239,6 +241,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.VR.dll
     namespaceName: 
     className: OVRDebugHeadController
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponSwitch
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -1255,6 +1263,12 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: damage
+  - hash:
+      serializedVersion: 2
       Hash: b00ce1f32326f1cd1160488ffd14965a
     assemblyName: Oculus.VR.Editor.dll
     namespaceName: 
@@ -1423,6 +1437,12 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: 6c435565a3225d3448e009aee61a83ff
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponSwitcher
+  - hash:
+      serializedVersion: 2
       Hash: aa88ae22474df55295327e4ee99e5a24
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1478,4 +1498,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/azmariewang/Downloads/742/VRGame_a3/1127_VRGameTest.apk
+  playerPath: /Users/azmariewang/Downloads/742/VRGame_a3/1126_VRGameTest.apk
