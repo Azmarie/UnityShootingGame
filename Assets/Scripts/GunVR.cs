@@ -24,8 +24,7 @@ public class GunVR : MonoBehaviour {
     float gunReloadTime = 1.0f;
     Quaternion previousRotation;
     public float health = 100;
-    // public GameObject Health;
-    public bool isDead; // if it's less or equal to 0
+    public bool isDead;
 
     public Text magBullets;
     public Text remainingBullets;
@@ -44,6 +43,7 @@ public class GunVR : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
         float dist2AmmoBox = Vector3.Distance(AmmoBox.transform.position, transform.position);
 
         // Cool down times
@@ -62,9 +62,9 @@ public class GunVR : MonoBehaviour {
         if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetMouseButtonDown(0))
             && gunShotTime <= 0 && gunReloadTime <= 0.0f && magBulletsVal > 0 && !isDead)
         {
-            shotDetection(); // Should be completed
+            shotDetection(); 
 
-            addEffects(); // Should be completed
+            addEffects();
 
             animator.SetBool("fire", true);
             gunShotTime = 0.5f;
@@ -98,24 +98,20 @@ public class GunVR : MonoBehaviour {
         }
         updateText();
 
-       
     }
 
     public void Being_shot(float damage) // getting hit from enemy
     {
-        Debug.Log("Player being shot");
-        // use component to get enemy's health
-        // GetComponent<CharacterMovement>().isDead = true;
-        // GetComponent<CharacterController>().enabled = false;
+        Debug.Log("Player being shot, called from enemy script");
         health -= damage;
-        Debug.Log(health);
+
         if(health <= 0){
-            Debug.Log("supposed o be dead");
-            GetComponent<CharacterMovement>().isDead = true;
             isDead = true;
+            GetComponent<Animator>().SetBool("dead", true);
+            GetComponent<CharacterMovement>().isDead = true;
+            GetComponent<CharacterController>().enabled = false;
+
         }
-        // chande isDead to true if it's dead
-        // change dead to true in the anamator
     }
 
     public void ReloadEvent(int eventNumber) // appearing and disappearing the handMag and gunMag

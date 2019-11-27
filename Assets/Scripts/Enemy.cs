@@ -32,60 +32,54 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0 ){
-            isDead = true;
-            deadEffects();
-        } else {
+        if(player.GetComponent<GunVR>().health > 0){
 
-            // Detect the player
-            Vector3 toPlayer = player.transform.position - transform.position;
-            float dist2Player = Vector3.Distance(player.transform.position, transform.position);
-            float angle = Vector3.Angle(toPlayer, transform.forward);
+            if (health <= 0){
+                isDead = true;
+                deadEffects();
+            } else {
 
-            if (angle <= 40 && angle >= -40 && dist2Player <= 10){
-                followPlayer = true;
+                // Detect the player
+                Vector3 toPlayer = player.transform.position - transform.position;
+                float dist2Player = Vector3.Distance(player.transform.position, transform.position);
+                float angle = Vector3.Angle(toPlayer, transform.forward);
 
-                if(dist2Player <= 5) {
-                    playerInRange = true;
-                } else {
-                    playerInRange = false;
+                if (angle <= 40 && angle >= -40 && dist2Player <= 10){
+                    followPlayer = true;
+
+                    if(dist2Player <= 5) {
+                        playerInRange = true;
+                    } else {
+                        playerInRange = false;
+                    }
                 }
+
+                if(!followPlayer) {
+                    Debug.Log("Not following");
+                    FollowTargets();
+                }
+
+                if(followPlayer) {
+                    Debug.Log("Following player");
+                    GetComponent<Animator>().SetBool("run", true);
+                    FollowPlayer();
+
+                    if (playerInRange) {
+                        GetComponent<Animator>().SetBool("run", false);
+                        Debug.Log("Player in range");
+                        AttackPlayer();
+                    } 
+                }   
             }
-
-            if(!followPlayer) {
-                Debug.Log("Not following");
-                FollowTargets();
-            }
-
-            if(followPlayer) {
-                Debug.Log("Following player");
-                GetComponent<Animator>().SetBool("run", true);
-                FollowPlayer();
-
-                if (playerInRange) {
-                    GetComponent<Animator>().SetBool("run", false);
-                    Debug.Log("Player in range");
-                    AttackPlayer();
-                } 
-                // else {
-                //     GetComponent<Animator>().SetBool("run", true);
-                //     Debug.Log("Player not in range, following player");
-                // }
-            }   
         }
-
     }
+
 
     public void Being_shot(float damage) // getting hit from player
     {
         Debug.Log("Enemy being shot");
-        // use component to get enemy's health
-        // GetComponent<CharacterMovement>().isDead = true;
-        // GetComponent<CharacterController>().enabled = false;
         health -= damage;
         Debug.Log(health);
-        // chande isDead to true if it's dead
-        // change dead to true in the anamator
     }
 
     void FollowTargets(){
@@ -142,12 +136,15 @@ public class Enemy : MonoBehaviour
         if(Physics.Raycast(end.transform.position, forward, out rayHit, 100.0f)){
             if(rayHit.transform.tag == "Player"){
                 //Player take damage
-                GetComponent<GunVR>().Being_shot(20);
-                if(GetComponent<GunVR>().health <= 0){
-                    Debug.Log("player supposed o be dead");
-                    GetComponent<CharacterMovement>().isDead = true;
-                    GetComponent<GunVR>().isDead = true;
-                }
+                rayHit.transform.GetComponent<GunVR>().Being_shot(20);
+                // if(GetComponent<GunVR>().health <= 0){
+                //     Debug.Log("player supposed o be dead");
+                //     player.GetComponent<CharacterMovement>().isDead = true;
+                //     player.GetComponent<GunVR>().isDead = true;
+                //     player.GetComponent<Animator>().SetBool("dead", true);
+                //     player.GetComponent<CharacterController>().enabled = false;
+                //     player.GetComponent<CharacterMovement>().enabled = false;
+                // }
             }
             // else {
             //     Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
@@ -166,7 +163,7 @@ public class Enemy : MonoBehaviour
     void deadEffects(){
         GetComponent<CharacterController>().enabled = false;
         GetComponent<Animator>().SetBool("die", true);
-        gun.transform.parent = null; // to make it an independent object
+        gun.transform.parent = null;
         gun.GetComponent<Collider>().enabled = true;
         gun.AddComponent<Rigidbody>().isKinematic = false;
     }

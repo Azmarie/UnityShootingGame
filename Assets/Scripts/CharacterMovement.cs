@@ -30,7 +30,6 @@ public class CharacterMovement : MonoBehaviour {
 
         // Setting Initial rotation of spine to make it 
         spineInitialLocalRotation = Quaternion.Euler(new Vector3(0.0f, 40.0f, 0.0f));
-        
 
     }
 
@@ -47,7 +46,6 @@ public class CharacterMovement : MonoBehaviour {
         // print(touchPos.y);
 
         if (Input.GetKey(KeyCode.W)){
-            // print("aaaa");
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S)){
@@ -89,7 +87,6 @@ public class CharacterMovement : MonoBehaviour {
         //         animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(touchPos.x, 2f) + Mathf.Pow(forwardSpeed, 2f)));
         //     }   
         // }
-        // OnTriggerEnter();
 
     }
 
@@ -147,9 +144,3 @@ public class CharacterMovement : MonoBehaviour {
     }
 
 }
-
-// When player moved to the door, the player won
-// https://docs.unity3d.com/ScriptReference/Collider.OnTriggerEnter.html
-// Pass Scene 0 
-// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html 
-// with invoke time
