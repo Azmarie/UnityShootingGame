@@ -16,7 +16,12 @@ public class WeaponSwitcher: MonoBehaviour {
 
 	void Update() {
 
-        if (Input.GetKey(KeyCode.A)) {
+        // if (Input.GetKey(KeyCode.A)) {
+        // if(OVRInput.Get(OVRInput.Button.PrimaryThumbstick)){
+            // OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp);
+
+        if (OVRInput.Get(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.One)) {
+            // print("herererere");
             player.GetComponent<Animator>().SetBool("swapped", true);
 		    // for (int i = 1; i <= nrWeapons; i++) {
 			// 	currentWeapon = i - 1;

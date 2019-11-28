@@ -1437,7 +1437,7 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
-      Hash: 6c435565a3225d3448e009aee61a83ff
+      Hash: daa0590a005135165ba1ad36eadd6965
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WeaponSwitcher
@@ -1498,4 +1498,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /Users/azmariewang/Downloads/742/VRGame_a3/1126_VRGameTest.apk
+  playerPath: /Users/azmariewang/Downloads/742/VRGame_a3/1127_VRGameTest.apk

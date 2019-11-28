@@ -78,7 +78,7 @@ public class CharacterMovement : MonoBehaviour {
                 {
                     forwardSpeed = forwardSpeed * 2;
                 }
-                print(forwardSpeed);
+                // print(forwardSpeed);
                 // Running the correct animation
                 animator.SetFloat("walk_forward", forwardSpeed);
                 animator.SetFloat("walk_backward", -touchPos.y);

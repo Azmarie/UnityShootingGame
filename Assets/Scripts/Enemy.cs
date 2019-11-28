@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
     int index = 0;
     bool playerInRange = false;
     bool followPlayer = false;
-    bool Keep_follow_target = true;
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +87,7 @@ public class Enemy : MonoBehaviour
 
         if (dist<1.0) {
             index = (index + 1) %numtargets;
-            print(index);
+            // print(index);
         }
     }
 
