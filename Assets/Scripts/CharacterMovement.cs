@@ -36,22 +36,17 @@ public class CharacterMovement : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         // float moveSpeed = 3.0f;
-        // // animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(10.0f, 2f) + Mathf.Pow(10.0f, 2f)));
         
         // if (Input.GetKey(KeyCode.W)){
-        // //     animator.SetFloat("walk_forward", 0.3f);
-        // //     animator.SetFloat("walk_backward", 0f);
-        // //     animator.SetFloat("walk_right", 0f);
-        // //     animator.SetFloat("walk_left", 0f);
 
         //     transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         // }
         // if (Input.GetKey(KeyCode.S)){
         //     transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
         // }
-        // // if (Input.GetKey(KeyCode.A)){
-        // //     transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-        // // }
+        // if (Input.GetKey(KeyCode.A)){
+        //     transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        // }
         // if (Input.GetKey(KeyCode.D)){
         //     transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         // }
@@ -78,7 +73,6 @@ public class CharacterMovement : MonoBehaviour {
                 {
                     forwardSpeed = forwardSpeed * 2;
                 }
-                // print(forwardSpeed);
                 // Running the correct animation
                 animator.SetFloat("walk_forward", forwardSpeed);
                 animator.SetFloat("walk_backward", -touchPos.y);
@@ -98,7 +92,7 @@ public class CharacterMovement : MonoBehaviour {
         if(col.gameObject.tag == "door")
         {
             Debug.Log("Reach Door");
-            Invoke("reloadGame", 3f);
+            Invoke("reloadGame", 10f);
         }
     }
 

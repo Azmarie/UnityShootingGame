@@ -62,7 +62,7 @@ public class GunVR : MonoBehaviour {
         
         // if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetMouseButtonDown(0))
         //     && gunShotTime <= 0 && gunReloadTime <= 0.0f && magBulletsVal > 0 && !isDead)
-        if( OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && gunShotTime <= 0 && gunReloadTime <= 0.0f && magBulletsVal > 0 && !isDead)
+        if( (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) || Input.GetMouseButtonDown(0)) && gunShotTime <= 0 && gunReloadTime <= 0.0f && magBulletsVal > 0 && !isDead)
         {
             shotDetection(); 
 
@@ -87,9 +87,13 @@ public class GunVR : MonoBehaviour {
         }
         
         // Bonus: if the ammo bos is within 3 meters, refill
-        if ((dist2AmmoBox <= 3 || OVRInput.GetDown(OVRInput.Button.Back) || OVRInput.Get(OVRInput.Button.Back) || OVRInput.GetDown(OVRInput.RawButton.Back) || OVRInput.Get(OVRInput.RawButton.Back))
+        if(dist2AmmoBox <= 1 && remainingBulletsVal <120 && !isDead)
+            remainingBulletsVal += 30;
+
+        if ((OVRInput.GetDown(OVRInput.Button.Back) || OVRInput.Get(OVRInput.Button.Back) || OVRInput.GetDown(OVRInput.RawButton.Back) || OVRInput.Get(OVRInput.RawButton.Back))
             && gunReloadTime <= 0.0f && gunShotTime <= 0.1f && remainingBulletsVal > 0 && magBulletsVal < magSize && !isDead )
         {
+            // Debug.Log("here");
             animator.SetBool("reload", true);
             gunReloadTime = 2.5f;
             Invoke("reloaded", 2.0f);
@@ -113,7 +117,7 @@ public class GunVR : MonoBehaviour {
             GetComponent<CharacterMovement>().isDead = true;
             GetComponent<CharacterController>().enabled = false;
             
-            Invoke("reloadGame", 3f);
+            Invoke("reloadGame", 10f);
 
         }
     }
@@ -175,3 +179,4 @@ public class GunVR : MonoBehaviour {
     }
 
 }
+

@@ -43,10 +43,10 @@ public class Enemy : MonoBehaviour
                 float dist2Player = Vector3.Distance(player.transform.position, transform.position);
                 float angle = Vector3.Angle(toPlayer, transform.forward);
 
-                if (angle <= 40 && angle >= -40 && dist2Player <= 10){
+                if (angle <= 40 && angle >= -40 && dist2Player <= 15){
                     followPlayer = true;
 
-                    if(dist2Player <= 5) {
+                    if(dist2Player <= 10) {
                         playerInRange = true;
                     } else {
                         playerInRange = false;
@@ -87,7 +87,6 @@ public class Enemy : MonoBehaviour
 
         if (dist<1.0) {
             index = (index + 1) %numtargets;
-            // print(index);
         }
     }
 
@@ -107,16 +106,6 @@ public class Enemy : MonoBehaviour
             nextFire = 0;
         }
         nextFire += Time.deltaTime;
-        
-        // // Instantiating the muzzle prefab and shot sound
-        
-        // magBulletsVal = magBulletsVal - 1;
-        // if (magBulletsVal <= 0 && remainingBulletsVal > 0)
-        // {
-        //     animator.SetBool("reloadAfterFire", true);
-        //     gunReloadTime = 2.5f;
-        //     Invoke("reloaded", 2.5f);
-        // }
     }
 
     void shotDetection() 
@@ -128,12 +117,7 @@ public class Enemy : MonoBehaviour
         var forward = end_rand - start.transform.position;
         
         if(Physics.Raycast(end.transform.position, forward, out rayHit, 100.0f)){
-            if(rayHit.transform.tag == "Player"){
-                rayHit.transform.GetComponent<GunVR>().Being_shot(20);
-            }
-            // else {
-            //     Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
-            // }
+            if(rayHit.transform.tag == "Player") rayHit.transform.GetComponent<GunVR>().Being_shot(20);
         }
     }
 

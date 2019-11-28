@@ -21,13 +21,7 @@ public class WeaponSwitcher: MonoBehaviour {
             // OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp);
 
         if (OVRInput.Get(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.One)) {
-            // print("herererere");
             player.GetComponent<Animator>().SetBool("swapped", true);
-		    // for (int i = 1; i <= nrWeapons; i++) {
-			// 	currentWeapon = i - 1;
-			// 	SwapGun(currentWeapon);
-            //     print(currentWeapon);
-			// }
             for (int i = 0; i < nrWeapons; i++) weapons[i].gameObject.SetActive(false);
             currentWeapon = 1-currentWeapon;
             SwapGun(currentWeapon);
