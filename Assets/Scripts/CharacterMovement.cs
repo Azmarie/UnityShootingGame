@@ -35,60 +35,60 @@ public class CharacterMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        float moveSpeed = 3.0f;
-        // animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(10.0f, 2f) + Mathf.Pow(10.0f, 2f)));
+        // float moveSpeed = 3.0f;
+        // // animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(10.0f, 2f) + Mathf.Pow(10.0f, 2f)));
         
-        if (Input.GetKey(KeyCode.W)){
-        //     animator.SetFloat("walk_forward", 0.3f);
-        //     animator.SetFloat("walk_backward", 0f);
-        //     animator.SetFloat("walk_right", 0f);
-        //     animator.SetFloat("walk_left", 0f);
+        // if (Input.GetKey(KeyCode.W)){
+        // //     animator.SetFloat("walk_forward", 0.3f);
+        // //     animator.SetFloat("walk_backward", 0f);
+        // //     animator.SetFloat("walk_right", 0f);
+        // //     animator.SetFloat("walk_left", 0f);
 
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S)){
-            transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
-        }
-        // if (Input.GetKey(KeyCode.A)){
-        //     transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        //     transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         // }
-        if (Input.GetKey(KeyCode.D)){
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-        }
+        // if (Input.GetKey(KeyCode.S)){
+        //     transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+        // }
+        // // if (Input.GetKey(KeyCode.A)){
+        // //     transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        // // }
+        // if (Input.GetKey(KeyCode.D)){
+        //     transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        // }
         
-        // OVRInput.Update();
-        // // Getting touch-pad touch position
-        // Vector2 touchPos = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, OVRInput.Controller.RTrackedRemote);
+        OVRInput.Update();
+        // Getting touch-pad touch position
+        Vector2 touchPos = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, OVRInput.Controller.RTrackedRemote);
 
-        // if (!isDead)
-        // {
-        //     // The player should not move
-        //     if (touchPos.magnitude < 0.1f)
-        //     {
-        //         animator.SetFloat("walk_forward", -1f);
-        //         animator.SetFloat("walk_backward", -1f);
-        //         animator.SetFloat("walk_right", -1f);
-        //         animator.SetFloat("walk_left", -1f);
-        //         animator.SetFloat("animation_speed", 0.0f);
-        //     }
-        //     else // The player should move
-        //     {
-        //         float forwardSpeed = touchPos.y;
-        //         if (forwardSpeed > 0) // making forward walking speed faster
-        //         {
-        //             forwardSpeed = forwardSpeed * 2;
-        //         }
-        //         print(forwardSpeed);
-        //         // Running the correct animation
-        //         animator.SetFloat("walk_forward", forwardSpeed);
-        //         animator.SetFloat("walk_backward", -touchPos.y);
-        //         animator.SetFloat("walk_right", touchPos.x);
-        //         animator.SetFloat("walk_left", -touchPos.x);
+        if (!isDead)
+        {
+            // The player should not move
+            if (touchPos.magnitude < 0.1f)
+            {
+                animator.SetFloat("walk_forward", -1f);
+                animator.SetFloat("walk_backward", -1f);
+                animator.SetFloat("walk_right", -1f);
+                animator.SetFloat("walk_left", -1f);
+                animator.SetFloat("animation_speed", 0.0f);
+            }
+            else // The player should move
+            {
+                float forwardSpeed = touchPos.y;
+                if (forwardSpeed > 0) // making forward walking speed faster
+                {
+                    forwardSpeed = forwardSpeed * 2;
+                }
+                print(forwardSpeed);
+                // Running the correct animation
+                animator.SetFloat("walk_forward", forwardSpeed);
+                animator.SetFloat("walk_backward", -touchPos.y);
+                animator.SetFloat("walk_right", touchPos.x);
+                animator.SetFloat("walk_left", -touchPos.x);
 
-        //         // Setting animation running speed
-        //         animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(touchPos.x, 2f) + Mathf.Pow(forwardSpeed, 2f)));
-        //     }   
-        // }
+                // Setting animation running speed
+                animator.SetFloat("animation_speed", Mathf.Sqrt(Mathf.Pow(touchPos.x, 2f) + Mathf.Pow(forwardSpeed, 2f)));
+            }   
+        }
 
     }
 
