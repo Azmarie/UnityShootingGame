@@ -11,7 +11,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Soldier_body1
-    second: {fileID: 2100000, guid: 499da4cbe1f46c14499208150d81ebb9, type: 2}
+    second: {fileID: 2100000, guid: f34613a9fe81b413297cb9b174276768, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -86,8 +86,10 @@ ModelImporter:
   - 2d1b2db58ff9d12428041cf52e39250a
   - 7bae327707e6a0e49a09fc00f160c76c
   - cbbc28b3c6717d94dac296fa7f43cead
+  - 87828bbd823b8466589e49540f1cf715
   - 3871fa244a037f141b03b7d8b3e281b9
   - ea7088c9df51b554a912816117051083
+  - a051eb57654354e8a8b94b97edaaeabc
   - 8c2405fb242234749b4ef0ee8ef94eb8
   - 113b894d1a5c1bc4a89570f482380561
   - 4c329affeb1f88745b8fc440f8c9a22c

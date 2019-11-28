@@ -4041,6 +4041,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 191474774}
   - {fileID: 1050889371}
+  player: {fileID: 8296172667830012321}
   currentWeapon: 0
 --- !u!1 &1222231186 stripped
 GameObject:

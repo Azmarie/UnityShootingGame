@@ -6,6 +6,7 @@ using System.Collections;
 public class WeaponSwitcher: MonoBehaviour {
 
 	public GameObject[] weapons;
+    public GameObject player;
 	public int currentWeapon = 0;
 	private int nrWeapons = 2;
 
@@ -14,31 +15,27 @@ public class WeaponSwitcher: MonoBehaviour {
 	}
 
 	void Update() {
+
         if (Input.GetKey(KeyCode.A)) {
-		    for (int i = 1; i <= nrWeapons; i++) {
-				currentWeapon = i - 1;
-				SwapGun(currentWeapon);
-                print(currentWeapon);
+            player.GetComponent<Animator>().SetBool("swapped", true);
+		    // for (int i = 1; i <= nrWeapons; i++) {
+			// 	currentWeapon = i - 1;
+			// 	SwapGun(currentWeapon);
+            //     print(currentWeapon);
+			// }
+            for (int i = 0; i < nrWeapons; i++) weapons[i].gameObject.SetActive(false);
+            currentWeapon = 1-currentWeapon;
+            SwapGun(currentWeapon);
 
-			}
-		}
-
-        // if (Input.GetKey(KeyCode.A)) {
-        //     print(currentWeapon);
-        //     currentWeapon = 1-currentWeapon;
-		// }
+        } else {
+            player.GetComponent<Animator>().SetBool("swapped", false);
+        }
 
 	}
 
 	void SwapGun(int index) {
-        print("SwapGun is happening");
-        // print(index);
 		for (int i = 0; i < nrWeapons; i++) {
-			if (i == index) {
-				weapons[i].gameObject.SetActive(true);
-			} else {
-				weapons[i].gameObject.SetActive(false);
-			}
+		    if (i == index) weapons[i].gameObject.SetActive(true);
 		}
 	}
 
