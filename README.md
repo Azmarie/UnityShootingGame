@@ -44,25 +44,24 @@ Add escape door and add Collider to door. Restart the game after 10 seconds when
 
 ## Bonus
 
-### (f) Ammo supply 
+### (f) Ammo supply (shown during demo)
 
 Add ammo object, get ammo box position and add player's remaining number of bullets when coming close to the box
 
-### (g) Enemies getting cover 
+### (g) Enemies getting cover (added after demo)
 
-When a cover a available, enemy 1 will hid around it (in room 1) and shoot the player from there; enemy 2 and 3 doesn't have cover and will not take cover
+A cover is available in room 1, enemy 1 will hid around it (in room 1) and shoot the player from there.
+Enemy 2 and 3 doesn't have cover and will not take cover.
 
-### (h) Detecting body part hits 
+### (h) Detecting body part hits (added after demo)
 
 Set collider and corresponding layers in Enemy, reduce health according to the hitted parts. For convience, we only set such property for enemy 1 and player, the enemy 2 and enemy 3 would lose health by 20 no matter which part is hitted.
 
-### (i) Swapping guns 
+### (i) Swapping guns (shown during demo)
 
 Activate game object while switching guns, add switching gun animation
 
 ## Notes
-
-Bonus (g) would not work perfectly, but the enemy would should when it is besides the cover
 
 Bonus (i)'s anaimation is from Mixamo Rifle Put Away. When you first enter/ load the game, the animation may not feel as smooth, though it will improve over time. Also, the animation will put away the gun and then bring it back, if you were wearing the headset, maybe need to look down/ round to see the put away/ pull out motion.
 
