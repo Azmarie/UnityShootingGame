@@ -54,7 +54,7 @@ When a cover a available, enemy 1 will hid around it (in room 1) and shoot the p
 
 ### (h) Detecting body part hits 
 
-Set collider and corresponding layers in Enemy, reduce health according to the hitted parts. For convience, we only set such property for the first enemy and player, the second and third enemy don't have such effect.
+Set collider and corresponding layers in Enemy, reduce health according to the hitted parts. For convience, we only set such property for enemy 1 and player, the enemy 2 and enemy 3 would lose health by 20 no matter which part is hitted.
 
 ### (i) Swapping guns 
 
