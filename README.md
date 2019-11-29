@@ -50,7 +50,7 @@ Add ammo object, get ammo box position and add player's remaining number of bull
 
 ### (g) Enemies getting cover 
 
-When a cover a available, hid around it and shoot the player from there
+When a cover a available, enemy 1 will hid around it (in room 1) and shoot the player from there; enemy 2 and 3 doesn't have cover and will not take cover
 
 ### (h) Detecting body part hits 
 
