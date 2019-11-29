@@ -54,7 +54,7 @@ When a cover a available, enemy 1 will hid around it (in room 1) and shoot the p
 
 ### (h) Detecting body part hits 
 
-Set layers to Enemy and reduce health according to body part
+Set collider and corresponding layers in Enemy, reduce health according to the hitted parts. For convience, we only set such property for the first enemy and player, the second and third enemy don't have such effect.
 
 ### (i) Swapping guns 
 
@@ -65,6 +65,8 @@ Activate game object while switching guns, add switching gun animation
 Bonus (g) would not work perfectly, but the enemy would should when it is besides the cover
 
 Bonus (i)'s anaimation is from Mixamo Rifle Put Away. When you first enter/ load the game, the animation may not feel as smooth, though it will improve over time. Also, the animation will put away the gun and then bring it back, if you were wearing the headset, maybe need to look down/ round to see the put away/ pull out motion.
+
+
 
 
 
