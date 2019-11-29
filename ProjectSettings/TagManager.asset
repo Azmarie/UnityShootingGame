@@ -8,6 +8,8 @@ TagManager:
   - head
   - AmmoBox
   - door
+  - chest
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - 
   - Player
   - Enemy
-  - 
-  - 
+  - Enemy_body
+  - Enemy_head
   - 
   - 
   - 

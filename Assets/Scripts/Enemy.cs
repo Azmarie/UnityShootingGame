@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public GameObject bulletHole;
     public GameObject end, start;
     public GameObject gun;
+    public GameObject cover;
 
     public float fireRate = 0.2f;  
     public float aimRate = 0.2f;
@@ -58,13 +59,25 @@ public class Enemy : MonoBehaviour
                 }
 
                 if(followPlayer) {
-                    GetComponent<Animator>().SetBool("run", true);
-                    FollowPlayer();
+                    float dist2Cover = Vector3.Distance(cover.transform.position, transform.position); 
 
-                    if (playerInRange) {
-                        GetComponent<Animator>().SetBool("run", false);
-                        AttackPlayer();
-                    } 
+                    GetComponent<Animator>().SetBool("run", true);
+                    // For enemy 2 and 3, who don't take cover
+                    if(dist2Cover>20.0f) {
+                        FollowPlayer();
+                        if(playerInRange) {
+                            AttackPlayer();
+                        }
+                    }
+
+                    // For enemy 1, who takes cover only in room 1 :)
+                    if(playerInRange) {
+                        if (dist2Cover<10.0f) SeekCover();
+                        if (dist2Cover<1.6f) {
+                            GetComponent<Animator>().SetBool("run", false);
+                            AttackPlayer();
+                        }
+                    }
                 }   
             }
         }
@@ -97,10 +110,19 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime);
     }
 
+    void SeekCover(){
+        GetComponent<Animator>().SetBool("run", true);
+        Debug.Log("Seeking Cover");
+        float dist2Cover = Vector3.Distance(cover.transform.position, transform.position); 
+        Vector3 coverPos = new Vector3(cover.transform.position.x, transform.position.y, cover.transform.position.z);
+        transform.LookAt(coverPos);
+
+     }
+
     void AttackPlayer(){
+        FollowPlayer();
         if (nextFire > fireRate)
         {
-            GetComponent<Animator>().SetTrigger("fire");
             shotDetection(); 
             addEffects();
             nextFire = 0;
@@ -110,7 +132,7 @@ public class Enemy : MonoBehaviour
 
     void shotDetection() 
     {   
-
+        GetComponent<Animator>().SetTrigger("fire");
         RaycastHit rayHit;
         Vector3 rand = end.transform.up * Random.Range(-0.1f, 0.1f) + end.transform.right * Random.Range(-0.1f, 0.1f);
         Vector3 end_rand = end.transform.position + rand;

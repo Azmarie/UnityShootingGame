@@ -24,7 +24,7 @@ public class GunVR : MonoBehaviour {
     float gunShotTime = 0.1f;
     float gunReloadTime = 1.0f;
     Quaternion previousRotation;
-    public float health = 100;
+    public float health = 10000;
     public bool isDead;
 
     public Text magBullets;
@@ -44,7 +44,6 @@ public class GunVR : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         float dist2AmmoBox = Vector3.Distance(AmmoBox.transform.position, transform.position);
 
         // Cool down times
@@ -108,7 +107,7 @@ public class GunVR : MonoBehaviour {
 
     public void Being_shot(float damage) // getting hit from enemy
     {
-        Debug.Log("Player being shot, called from enemy script");
+        // Debug.Log("Player being shot, called from enemy script");
         health -= damage;
 
         if(health <= 0){
@@ -123,7 +122,7 @@ public class GunVR : MonoBehaviour {
     }
 
     void reloadGame(){
-        Debug.Log("Scene loading: 0");
+        // Debug.Log("Scene loading: 0");
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -155,14 +154,18 @@ public class GunVR : MonoBehaviour {
         health_text.text = health.ToString();
     }
 
+    // int layer_mask = LayerMask.GetMask("Enemy");
+
     void shotDetection() // Detecting the object which player shot 
     {   
         RaycastHit rayHit;
+        
         if(Physics.Raycast(end.transform.position, (end.transform.position - start.transform.position), out rayHit, 100.0f)){
-            Debug.Log(rayHit.transform.tag);
 
+            Debug.Log("tag : "+ rayHit.transform.gameObject.layer);
+            Debug.Log("layer_mask : "+ rayHit.collider.transform);
             if(rayHit.transform.tag == "Enemy"){
-                Debug.Log("Enemy being shotttt");
+                
                 rayHit.transform.GetComponent<Enemy>().Being_shot(20);
             } else {
                 Instantiate(bulletHole, rayHit.point+rayHit.transform.up*0.01f, rayHit.transform.rotation);
