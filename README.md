@@ -1,4 +1,4 @@
-#<center> Homework 3 Report </center>
+#Homework 3 Report
 
 
 ## Task (a) to (e)
